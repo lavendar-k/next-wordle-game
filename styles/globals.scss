@@ -1,0 +1,16 @@
+@use 'variables';
+@use 'colors';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color-scheme: dark;
+}
+
+body {
+    font-family: variables.$font1;
+    background: colors.$tone-7;
+}

@@ -1,0 +1,30 @@
+@use 'styles/variables';
+@use 'styles/colors';
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 32px);
+    height: 50px;
+    padding: 0 16px;
+    border-bottom: solid 1px colors.$tone-4;
+
+    span {
+        font-family: variables.$font3;
+        font-size: 32px;
+        font-weight: 900;
+        padding-top: 8px;
+    }
+
+    .left,
+    .right {
+        padding-top: 2px;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            padding: 4px;
+        }
+    }
+}

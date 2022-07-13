@@ -1,0 +1,20 @@
+@use 'styles/colors';
+@use 'styles/variables';
+
+.modal {
+    position: fixed;
+    top: 108px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: colors.$white;
+    z-index: 99;
+    padding: 16px;
+    border-radius: 5px;
+
+    span {
+        font-family: variables.$font2;
+        font-size: 16px;
+        font-weight: 700;
+        color: colors.$black;
+    }
+}

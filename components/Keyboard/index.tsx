@@ -1,0 +1,157 @@
+import { useEffect, useState } from 'react';
+import { useGameData } from '../../contexts/GameData';
+import { useAlertText } from '../../contexts/AlertText';
+import { answers } from '../../shared/constants/answers';
+import { keys, keyState } from '../../shared/constants/enums';
+import { keysArray, keysLayout } from '../../shared/constants/keys';
+import Key from './Key';
+import styles from './Keyboard.module.scss';
+
+const Keyboard = () => {
+    const [isInputDisabled, setIsInputDisabled] = useState<boolean>(false);
+
+    const {
+        gameData,
+        setGameData,
+        currentWord,
+        setCurrentWord,
+        rowShakeControls,
+        answer,
+    } = useGameData();
+    const { setAlertText, displayAlertText } = useAlertText();
+
+    const handleKeyInput = (key: keys) => {
+        if (gameData.board.length >= 6 || isInputDisabled) {
+            return;
+        }
+        if (key == keys.Backspace) {
+            setCurrentWord(currentWord.slice(0, -1));
+        } else if (key === keys.Enter) {
+            if (currentWord.length !== 5) {
+                return;
+            }
+            if (!answers.includes(currentWord)) {
+                setAlertText('Not in word list');
+                displayAlertText();
+                rowShakeControls.start('animate');
+                return;
+            }
+            setGameData(prev => ({
+                ...prev,
+                board: [...prev.board, currentWord],
+            }));
+            setCurrentWord('');
+            setIsInputDisabled(true);
+        } else if (currentWord.length > 4) {
+            return;
+        } else {
+            setCurrentWord(currentWord + key);
+        }
+    };
+
+    const handleSetBoardState = (index: number, state: keyState) => {
+        setGameData(prev => ({
+            ...prev,
+            boardStates: prev.boardStates.map((row, i) =>
+                i === gameData.board.length - 1
+                    ? row.map((s, j) => (j === index ? state : s))
+                    : row
+            ),
+        }));
+    };
+
+    const handleSetKeyState = (letter: string, state: keyState) => {
+        setGameData(prev => ({
+            ...prev,
+            keyStates: {
+                ...prev.keyStates,
+                [letter]: state,
+            },
+        }));
+    };
+
+    useEffect(() => {
+        if (gameData.board.length === 0 || !isInputDisabled) {
+            return;
+        }
+        if (gameData.board[gameData.board.length - 1] === answer) {
+            alert('You win!');
+        } else if (gameData.board.length === 6) {
+            alert('You lose!');
+        } else {
+            const timeoutSpan = 300;
+            gameData.board[gameData.board.length - 1]
+                .split('')
+                .forEach((letter: string, index) =>
+                    setTimeout(() => {
+                        if (letter === answer[index]) {
+                            handleSetBoardState(index, keyState.Correct);
+                        } else if (answer.includes(letter)) {
+                            handleSetBoardState(index, keyState.Present);
+                        } else {
+                            handleSetBoardState(index, keyState.Absent);
+                        }
+                    }, timeoutSpan * index)
+                );
+            setTimeout(() => {
+                setIsInputDisabled(false);
+                gameData.board[gameData.board.length - 1]
+                    .split('')
+                    .forEach((letter: string, index) => {
+                        if (letter === answer[index]) {
+                            handleSetKeyState(letter, keyState.Correct);
+                        } else if (
+                            answer.includes(letter) &&
+                            gameData.keyStates[letter] !== keyState.Correct
+                        ) {
+                            handleSetKeyState(letter, keyState.Present);
+                        } else if (
+                            gameData.keyStates[letter] !== keyState.Correct &&
+                            gameData.keyStates[letter] !== keyState.Present
+                        ) {
+                            handleSetKeyState(letter, keyState.Absent);
+                        }
+                    });
+            }, 1500);
+        }
+    }, [gameData.board]);
+
+    useEffect(() => {
+        const keyPressListener = (event: KeyboardEvent) => {
+            if (
+                !keysArray.includes(event.key) ||
+                gameData.keyStates[event.key] === keyState.Absent
+            ) {
+                return;
+            }
+            handleKeyInput(event.key as keys);
+        };
+        window.addEventListener('keydown', keyPressListener);
+        return () => {
+            window.removeEventListener('keydown', keyPressListener);
+        };
+    }, []);
+
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.keyboard}>
+                {keysLayout.map((row, i) => (
+                    <div key={i} className={styles.row}>
+                        {i === 1 && <div className={styles.spacer} />}
+                        {row.map((key, j) => (
+                            <Key
+                                key={`keyboard-${i}-${j}`}
+                                content={key as keys}
+                                handleKeyInput={handleKeyInput}
+                                state={gameData.keyStates[key]}
+                            />
+                        ))}
+                        {i === 1 && <div className={styles.spacer} />}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default Keyboard;
