@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useGameData } from '../../../contexts/GameData';
+import { useData } from '../../../contexts/Data';
 import styles from './Statistics.module.scss';
 
 const Statistics = () => {
@@ -8,7 +8,7 @@ const Statistics = () => {
     const [currentStreak, setCurrentStreak] = useState<number>(0);
     const [maxStreak, setMaxStreak] = useState<number>(0);
 
-    const { statistics } = useGameData();
+    const { statistics } = useData();
 
     useEffect(() => {
         setGuessData(initialGuessData);

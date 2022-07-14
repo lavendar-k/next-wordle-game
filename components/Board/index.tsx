@@ -1,11 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useGameData } from '../../contexts/GameData';
+import { useData } from '../../contexts/Data';
 import { keyState } from '../../shared/constants/enums';
 import styles from './Board.module.scss';
 import Tile from './Tile';
 
 const Board = () => {
-    const { gameData, currentWord, rowShakeControls } = useGameData();
+    const { gameData, currentWord, rowShakeControls } = useData();
     return (
         <div className={styles.wrapper}>
             <div className={styles.board}>

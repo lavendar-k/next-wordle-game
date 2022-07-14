@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useGameData } from '../../contexts/GameData';
-import { useAlertText } from '../../contexts/AlertText';
+import { useData } from '../../contexts/Data';
+import { useAlert } from '../../contexts/Alert';
 import { answers } from '../../shared/constants/answers';
 import { keys, keyState } from '../../shared/constants/enums';
 import { keysArray, keysLayout } from '../../shared/constants/keys';
@@ -18,8 +18,8 @@ const Keyboard = () => {
         rowShakeControls,
         answer,
         pushStatistics,
-    } = useGameData();
-    const { setAlertText, displayAlertText } = useAlertText();
+    } = useData();
+    const { setAlert, displayAlert } = useAlert();
 
     const handleKeyInput = (key: keys) => {
         if (gameData.board.length >= 6 || isInputDisabled) {
@@ -32,8 +32,8 @@ const Keyboard = () => {
                 return;
             }
             if (!answers.includes(currentWord)) {
-                setAlertText('Not in word list');
-                displayAlertText();
+                setAlert('Not in word list');
+                displayAlert();
                 rowShakeControls.start('animate');
                 return;
             }

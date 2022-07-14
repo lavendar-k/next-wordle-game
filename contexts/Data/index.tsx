@@ -17,7 +17,7 @@ import getCurrentDate from '../../shared/functions/getCurrentDate';
 import getRandomNumber from '../../shared/functions/getRandomNumber';
 import useLocalStorage from '../../shared/hooks/useLocalStorage';
 
-const GameDataContext = createContext<IGameDataContext>({
+const DataContext = createContext<IDataContext>({
     gameData: {
         date: getCurrentDate(),
         board: [],
@@ -33,9 +33,9 @@ const GameDataContext = createContext<IGameDataContext>({
     rowShakeControls: {} as AnimationControls,
 });
 
-export const useGameData = () => useContext(GameDataContext);
+export const useData = () => useContext(DataContext);
 
-export const GameDataProvider = ({ children }: IProps) => {
+export const DataProvider = ({ children }: IProps) => {
     const [gameData, setGameData] = useState<IGameData>({
         date: getCurrentDate(),
         board: [],
@@ -98,7 +98,7 @@ export const GameDataProvider = ({ children }: IProps) => {
     }, [statistics]);
 
     return (
-        <GameDataContext.Provider
+        <DataContext.Provider
             value={{
                 gameData,
                 setGameData,
@@ -111,7 +111,7 @@ export const GameDataProvider = ({ children }: IProps) => {
             }}
         >
             {children}
-        </GameDataContext.Provider>
+        </DataContext.Provider>
     );
 };
 
@@ -119,7 +119,7 @@ interface IProps {
     children: React.ReactNode;
 }
 
-interface IGameDataContext {
+interface IDataContext {
     gameData: IGameData;
     setGameData: Dispatch<SetStateAction<IGameData>>;
     currentWord: string;

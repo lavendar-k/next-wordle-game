@@ -2,21 +2,21 @@ import type { NextPage } from 'next';
 import Board from '../components/Board';
 import Keyboard from '../components/Keyboard';
 import Navbar from '../components/Navbar';
-import { GameDataProvider } from '../contexts/GameData';
-import { AlertTextProvider } from '../contexts/AlertText';
+import { DataProvider } from '../contexts/Data';
+import { AlertProvider } from '../contexts/Alert';
 import { ModalProvider } from '../contexts/Modal';
 
 const Home: NextPage = () => {
     return (
-        <GameDataProvider>
+        <DataProvider>
             <ModalProvider>
-                <AlertTextProvider>
+                <AlertProvider>
                     <Navbar />
                     <Board />
                     <Keyboard />
-                </AlertTextProvider>
+                </AlertProvider>
             </ModalProvider>
-        </GameDataProvider>
+        </DataProvider>
     );
 };
 
