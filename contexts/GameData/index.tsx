@@ -66,9 +66,10 @@ export const GameDataProvider = ({ children }: IProps) => {
 
     const pushStatistics = (count: number) => {
         const date = getCurrentDate();
-        const newStatistics = statistics;
-        newStatistics[date] = count;
-        setStatistics(newStatistics);
+        setStatistics(prev => ({
+            ...prev,
+            [date]: count,
+        }));
     };
 
     const rowShakeControls = useAnimation();
@@ -124,7 +125,7 @@ interface IGameDataContext {
     currentWord: string;
     setCurrentWord: Dispatch<SetStateAction<string>>;
     answer: string;
-    statistics: IStatistics | null;
+    statistics: IStatistics;
     pushStatistics: (count: number) => void;
     rowShakeControls: AnimationControls;
 }

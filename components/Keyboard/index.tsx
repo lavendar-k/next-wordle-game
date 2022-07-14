@@ -17,6 +17,7 @@ const Keyboard = () => {
         setCurrentWord,
         rowShakeControls,
         answer,
+        pushStatistics,
     } = useGameData();
     const { setAlertText, displayAlertText } = useAlertText();
 
@@ -74,45 +75,46 @@ const Keyboard = () => {
         if (gameData.board.length === 0 || !isInputDisabled) {
             return;
         }
-        if (gameData.board[gameData.board.length - 1] === answer) {
-            alert('You win!');
-        } else if (gameData.board.length === 6) {
-            alert('You lose!');
-        } else {
-            const timeoutSpan = 300;
+        const timeoutSpan = 300;
+        gameData.board[gameData.board.length - 1]
+            .split('')
+            .forEach((letter: string, index) =>
+                setTimeout(() => {
+                    if (letter === answer[index]) {
+                        handleSetBoardState(index, keyState.Correct);
+                    } else if (answer.includes(letter)) {
+                        handleSetBoardState(index, keyState.Present);
+                    } else {
+                        handleSetBoardState(index, keyState.Absent);
+                    }
+                }, timeoutSpan * index)
+            );
+        setTimeout(() => {
+            setIsInputDisabled(false);
             gameData.board[gameData.board.length - 1]
                 .split('')
-                .forEach((letter: string, index) =>
-                    setTimeout(() => {
-                        if (letter === answer[index]) {
-                            handleSetBoardState(index, keyState.Correct);
-                        } else if (answer.includes(letter)) {
-                            handleSetBoardState(index, keyState.Present);
-                        } else {
-                            handleSetBoardState(index, keyState.Absent);
-                        }
-                    }, timeoutSpan * index)
-                );
-            setTimeout(() => {
-                setIsInputDisabled(false);
-                gameData.board[gameData.board.length - 1]
-                    .split('')
-                    .forEach((letter: string, index) => {
-                        if (letter === answer[index]) {
-                            handleSetKeyState(letter, keyState.Correct);
-                        } else if (
-                            answer.includes(letter) &&
-                            gameData.keyStates[letter] !== keyState.Correct
-                        ) {
-                            handleSetKeyState(letter, keyState.Present);
-                        } else if (
-                            gameData.keyStates[letter] !== keyState.Correct &&
-                            gameData.keyStates[letter] !== keyState.Present
-                        ) {
-                            handleSetKeyState(letter, keyState.Absent);
-                        }
-                    });
-            }, 1500);
+                .forEach((letter: string, index) => {
+                    if (letter === answer[index]) {
+                        handleSetKeyState(letter, keyState.Correct);
+                    } else if (
+                        answer.includes(letter) &&
+                        gameData.keyStates[letter] !== keyState.Correct
+                    ) {
+                        handleSetKeyState(letter, keyState.Present);
+                    } else if (
+                        gameData.keyStates[letter] !== keyState.Correct &&
+                        gameData.keyStates[letter] !== keyState.Present
+                    ) {
+                        handleSetKeyState(letter, keyState.Absent);
+                    }
+                });
+        }, 1500);
+        if (gameData.board[gameData.board.length - 1] === answer) {
+            pushStatistics(gameData.board.length);
+            alert('You win!');
+        } else if (gameData.board.length === 6) {
+            pushStatistics(gameData.board.length + 1);
+            alert('You lose!');
         }
     }, [gameData.board]);
 
