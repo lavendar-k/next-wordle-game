@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useData } from '../../contexts/Data';
-import { useAlert } from '../../contexts/Alert';
 import { answers } from '../../shared/constants/answers';
 import { keys, keyState } from '../../shared/constants/enums';
 import { keysArray, keysLayout } from '../../shared/constants/keys';
+import { Alert } from '../Alert';
 import Key from './Key';
 import styles from './Keyboard.module.scss';
 
 const Keyboard = () => {
     const [isInputDisabled, setIsInputDisabled] = useState<boolean>(false);
+    const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
+    const [alertMessage, setAlertMessage] = useState<string>('');
 
     const {
         gameData,
@@ -19,7 +21,6 @@ const Keyboard = () => {
         answer,
         pushStatistics,
     } = useData();
-    const { setAlert, displayAlert } = useAlert();
 
     const handleKeyInput = (key: keys) => {
         if (gameData.board.length >= 6 || isInputDisabled) {
@@ -32,8 +33,8 @@ const Keyboard = () => {
                 return;
             }
             if (!answers.includes(currentWord)) {
-                setAlert('Not in word list');
-                displayAlert();
+                setAlertMessage('Not in word list');
+                setIsAlertOpen(true);
                 rowShakeControls.start('animate');
                 return;
             }
@@ -135,24 +136,31 @@ const Keyboard = () => {
     }, []);
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.keyboard}>
-                {keysLayout.map((row, i) => (
-                    <div key={i} className={styles.row}>
-                        {i === 1 && <div className={styles.spacer} />}
-                        {row.map((key, j) => (
-                            <Key
-                                key={`keyboard-${i}-${j}`}
-                                content={key as keys}
-                                handleKeyInput={handleKeyInput}
-                                state={gameData.keyStates[key]}
-                            />
-                        ))}
-                        {i === 1 && <div className={styles.spacer} />}
-                    </div>
-                ))}
+        <>
+            <div className={styles.wrapper}>
+                <div className={styles.keyboard}>
+                    {keysLayout.map((row, i) => (
+                        <div key={i} className={styles.row}>
+                            {i === 1 && <div className={styles.spacer} />}
+                            {row.map((key, j) => (
+                                <Key
+                                    key={`keyboard-${i}-${j}`}
+                                    content={key as keys}
+                                    handleKeyInput={handleKeyInput}
+                                    state={gameData.keyStates[key]}
+                                />
+                            ))}
+                            {i === 1 && <div className={styles.spacer} />}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+            <Alert
+                open={isAlertOpen}
+                onClose={() => setIsAlertOpen(false)}
+                message={alertMessage}
+            />
+        </>
     );
 };
 
