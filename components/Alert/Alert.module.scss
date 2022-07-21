@@ -6,7 +6,7 @@
     top: 108px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: colors.$white;
+    background-color: colors.$black;
     z-index: 99;
     padding: 16px;
     border-radius: 5px;
@@ -15,6 +15,6 @@
         font-family: variables.$font2;
         font-size: 16px;
         font-weight: 700;
-        color: colors.$black;
+        color: colors.$white;
     }
 }

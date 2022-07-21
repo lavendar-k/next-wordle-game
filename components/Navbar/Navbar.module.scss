@@ -9,12 +9,13 @@
     height: 50px;
     padding: 0 16px;
     border-bottom: solid 1px colors.$tone-4;
+    color: colors.$tone-1;
 
     span {
         font-family: variables.$font3;
         font-size: 32px;
         font-weight: 900;
-        padding-top: 8px;
+        padding-top: 2px;
     }
 
     .left,

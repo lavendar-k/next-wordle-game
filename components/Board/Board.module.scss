@@ -33,7 +33,6 @@
                 height: 0;
                 padding-top: 8.79%;
                 padding-bottom: 8.79%;
-                background-color: colors.$tone-7;
                 border: solid 2px colors.$tone-4;
                 color: colors.$tone-1;
                 font-family: variables.$font2;
@@ -43,17 +42,17 @@
             }
 
             .tileCorrect {
-                background-color: colors.$darkendGreen;
-                border: solid 2px colors.$darkendGreen;
+                background-color: colors.$correct;
+                border: solid 2px colors.$correct;
             }
 
             .tilePresent {
-                background-color: colors.$darkendYellow;
-                border: solid 2px colors.$darkendYellow;
+                background-color: colors.$present;
+                border: solid 2px colors.$present;
             }
 
             .tileAbsent {
-                background-color: colors.$tone-4;
+                background-color: colors.$absent;
             }
 
             .tileInput {

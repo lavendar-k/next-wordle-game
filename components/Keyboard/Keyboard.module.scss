@@ -33,10 +33,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: colors.$tone-2;
+                background-color: colors.$key-bg;
                 border: none;
                 border-radius: 4px;
-                color: colors.$tone-1;
+                color: colors.$key-text-color;
                 font-family: variables.$font2;
                 font-size: 14px;
                 font-weight: 500;
@@ -52,15 +52,15 @@
             }
 
             .keyCorrect {
-                background-color: colors.$darkendGreen;
+                background-color: colors.$correct;
             }
 
             .keyPresent {
-                background-color: colors.$darkendYellow;
+                background-color: colors.$present;
             }
 
             .keyAbsent {
-                background-color: colors.$tone-4;
+                background-color: colors.$absent;
                 cursor: auto;
 
                 span {

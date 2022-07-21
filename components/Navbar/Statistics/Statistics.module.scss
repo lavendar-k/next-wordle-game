@@ -84,12 +84,13 @@
             padding-right: 8px;
             min-width: 18px;
             height: 18px;
-            background-color: colors.$tone-4;
+            background-color: colors.$absent;
 
             span {
                 font-weight: bold;
                 font-size: 12px;
                 line-height: 18px;
+                color: colors.$tile-text-color;
             }
         }
     }

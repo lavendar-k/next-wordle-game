@@ -5,6 +5,7 @@ import SettingsIcon from '../../shared/icons/SettingsIcon';
 import StatsIcon from '../../shared/icons/StatsIcon';
 import Modal from '../Modal';
 import styles from './Navbar.module.scss';
+import Settings from './Settings';
 import Statistics from './Statistics';
 
 const Navbar = () => {
@@ -33,7 +34,13 @@ const Navbar = () => {
                     >
                         <StatsIcon />
                     </div>
-                    <div className={styles.icon}>
+                    <div
+                        className={styles.icon}
+                        onClick={() => {
+                            setModalContent(<Settings />);
+                            setIsModalOpen(true);
+                        }}
+                    >
                         <SettingsIcon />
                     </div>
                 </div>
