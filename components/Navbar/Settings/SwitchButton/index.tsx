@@ -1,12 +1,19 @@
+import clsx from 'clsx';
 import { useState } from 'react';
+import { useTheme } from '../../../../contexts/Theme';
 import styles from './SwitchButton.module.scss';
 
-const SwitchButton = ({ onClick }: IProps) => {
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+const SwitchButton = ({ defaultChecked, onClick }: IProps) => {
+    const [isChecked, setIsChecked] = useState<boolean>(
+        defaultChecked || false
+    );
+
+    const { theme } = useTheme();
+
     return (
         <button
             aria-checked={isChecked}
-            className={styles.switch}
+            className={clsx(styles.switch, styles[theme])}
             role="switch"
             onClick={() => {
                 onClick();
@@ -21,5 +28,6 @@ const SwitchButton = ({ onClick }: IProps) => {
 export default SwitchButton;
 
 interface IProps {
+    defaultChecked?: boolean;
     onClick: () => void;
 }

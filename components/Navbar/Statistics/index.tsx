@@ -1,5 +1,7 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useData } from '../../../contexts/Data';
+import { useTheme } from '../../../contexts/Theme';
 import styles from './Statistics.module.scss';
 
 const Statistics = () => {
@@ -9,6 +11,7 @@ const Statistics = () => {
     const [maxStreak, setMaxStreak] = useState<number>(0);
 
     const { statistics } = useData();
+    const { theme } = useTheme();
 
     useEffect(() => {
         setGuessData(initialGuessData);
@@ -47,7 +50,7 @@ const Statistics = () => {
     }, [guessData]);
 
     return (
-        <div className={styles.statistics}>
+        <div className={clsx(styles.statistics, styles[theme])}>
             <h1 style={{ marginTop: 0 }}>Statistics</h1>
             <div className={styles.summary}>
                 <div className={styles.item}>

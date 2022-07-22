@@ -95,3 +95,15 @@
         }
     }
 }
+
+.dark {
+    .graph {
+        .column {
+            background-color: colors.$absent-dark;
+
+            span {
+                color: colors.$tile-text-color-dark;
+            }
+        }
+    }
+}

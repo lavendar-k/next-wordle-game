@@ -1,4 +1,4 @@
-enum keys {
+export enum keys {
     q = 'q',
     w = 'w',
     e = 'e',
@@ -29,7 +29,7 @@ enum keys {
     Backspace = 'Backspace',
 }
 
-enum keyState {
+export enum keyState {
     Base,
     Present,
     Correct,
@@ -37,4 +37,7 @@ enum keyState {
     Input,
 }
 
-export { keys, keyState };
+export enum ThemeType {
+    Light = 'light',
+    Dark = 'dark',
+}

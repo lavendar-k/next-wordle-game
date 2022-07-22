@@ -1,4 +1,6 @@
+import clsx from 'clsx';
 import { ReactNode, useState } from 'react';
+import { useTheme } from '../../contexts/Theme';
 import HelpIcon from '../../shared/icons/HelpIcon';
 import MenuIcon from '../../shared/icons/MenuIcon';
 import SettingsIcon from '../../shared/icons/SettingsIcon';
@@ -12,9 +14,11 @@ const Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode>(null);
 
+    const { theme } = useTheme();
+
     return (
         <>
-            <div className={styles.navbar}>
+            <div className={clsx(styles.navbar, styles[theme])}>
                 <div className={styles.left}>
                     <div className={styles.icon}>
                         <MenuIcon />

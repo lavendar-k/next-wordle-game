@@ -1,7 +1,11 @@
+import clsx from 'clsx';
 import { useEffect } from 'react';
+import { useTheme } from '../../contexts/Theme';
 import styles from './Alert.module.scss';
 
 export const Alert = ({ open, onClose, autoHideDuration, message }: IProps) => {
+    const { theme } = useTheme();
+
     useEffect(() => {
         if (open) {
             setTimeout(() => {
@@ -13,7 +17,7 @@ export const Alert = ({ open, onClose, autoHideDuration, message }: IProps) => {
     return (
         <>
             {open && (
-                <div className={styles.alert}>
+                <div className={clsx(styles.alert, styles[theme])}>
                     <span>{message}</span>
                 </div>
             )}

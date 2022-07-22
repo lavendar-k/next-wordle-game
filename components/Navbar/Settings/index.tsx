@@ -1,20 +1,30 @@
-import SwitchButton from '../../SwitchButton';
+import clsx from 'clsx';
+import { useTheme } from '../../../contexts/Theme';
+import { ThemeType } from '../../../shared/constants/enums';
 import styles from './Settings.module.scss';
+import SwitchButton from './SwitchButton';
 
 const Settings = () => {
+    const { theme, setTheme } = useTheme();
+
     const handleDarkModeSwitch = () => {
-        console.log('Dark mode switch clicked');
+        setTheme(prev =>
+            prev === ThemeType.Light ? ThemeType.Dark : ThemeType.Light
+        );
     };
 
     return (
-        <div className={styles.settings}>
+        <div className={clsx(styles.settings, styles[theme])}>
             <h1 style={{ marginTop: 0 }}>Settings</h1>
             <div className={styles.rows}>
                 <div className={styles.setting}>
                     <div className={styles.text}>
                         <span className={styles.title}>Dark Theme</span>
                     </div>
-                    <SwitchButton onClick={handleDarkModeSwitch} />
+                    <SwitchButton
+                        defaultChecked={theme == ThemeType.Dark}
+                        onClick={handleDarkModeSwitch}
+                    />
                 </div>
                 <div className={styles.setting}>
                     <div className={styles.text}>

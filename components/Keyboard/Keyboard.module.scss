@@ -53,19 +53,48 @@
 
             .keyCorrect {
                 background-color: colors.$correct;
+                color: colors.$key-evaluated-text-color;
             }
 
             .keyPresent {
                 background-color: colors.$present;
+                color: colors.$key-evaluated-text-color;
             }
 
             .keyAbsent {
                 background-color: colors.$absent;
+                color: colors.$key-evaluated-text-color;
                 cursor: auto;
 
                 span {
                     cursor: default;
                 }
+            }
+        }
+    }
+}
+
+.dark {
+    .keyboard {
+        .row {
+            .key {
+                background-color: colors.$key-bg-dark;
+                color: colors.$key-text-color-dark;
+            }
+
+            .keyCorrect {
+                background-color: colors.$correct-dark;
+                color: colors.$key-evaluated-text-color-dark;
+            }
+
+            .keyPresent {
+                background-color: colors.$present-dark;
+                color: colors.$key-evaluated-text-color-dark;
+            }
+
+            .keyAbsent {
+                background-color: colors.$absent-dark;
+                color: colors.$key-evaluated-text-color-dark;
             }
         }
     }

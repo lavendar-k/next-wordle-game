@@ -44,19 +44,52 @@
             .tileCorrect {
                 background-color: colors.$correct;
                 border: solid 2px colors.$correct;
+                color: colors.$tile-text-color;
             }
 
             .tilePresent {
                 background-color: colors.$present;
                 border: solid 2px colors.$present;
+                color: colors.$tile-text-color;
             }
 
             .tileAbsent {
                 background-color: colors.$absent;
+                border: solid 2px colors.$absent;
+                color: colors.$tile-text-color;
             }
 
             .tileInput {
                 border-color: colors.$tone-3;
+            }
+        }
+    }
+}
+
+.dark {
+    .board {
+        .row {
+            .tile {
+                border-color: colors.$tone-3-dark;
+                color: colors.$tone-1-dark;
+            }
+
+            .tileCorrect {
+                background-color: colors.$correct-dark;
+                border-color: colors.$correct-dark;
+                color: colors.$tile-text-color-dark;
+            }
+
+            .tilePresent {
+                background-color: colors.$present-dark;
+                border-color: colors.$present-dark;
+                color: colors.$tile-text-color-dark;
+            }
+
+            .tileAbsent {
+                background-color: colors.$absent-dark;
+                border-color: colors.$absent-dark;
+                color: colors.$tile-text-color-dark;
             }
         }
     }

@@ -58,3 +58,26 @@
         }
     }
 }
+
+.dark {
+    color: colors.$tone-1-dark;
+
+    .rows {
+        .setting {
+            border-bottom: 1px solid colors.$tone-4-dark;
+
+            .text {
+                .desc {
+                    color: colors.$tone-2-dark;
+                }
+            }
+            a {
+                color: colors.$tone-2-dark;
+            }
+        }
+
+        .footnote {
+            color: colors.$tone-2-dark;
+        }
+    }
+}

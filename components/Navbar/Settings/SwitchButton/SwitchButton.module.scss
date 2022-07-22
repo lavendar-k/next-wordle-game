@@ -29,3 +29,14 @@
         }
     }
 }
+
+.dark {
+    background: colors.$tone-3-dark;
+
+    &[aria-checked='true'] {
+        background: colors.$correct-dark;
+        .knob {
+            transform: translateX(12px);
+        }
+    }
+}

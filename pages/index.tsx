@@ -2,15 +2,16 @@ import type { NextPage } from 'next';
 import Board from '../components/Board';
 import Keyboard from '../components/Keyboard';
 import Navbar from '../components/Navbar';
-import { DataProvider } from '../contexts/Data';
+import { useTheme } from '../contexts/Theme';
 
 const Home: NextPage = () => {
+    const { theme } = useTheme();
     return (
-        <DataProvider>
+        <div className={theme}>
             <Navbar />
             <Board />
             <Keyboard />
-        </DataProvider>
+        </div>
     );
 };
 

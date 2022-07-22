@@ -11,6 +11,10 @@
     z-index: 99;
 }
 
+.modalOverlayDark {
+    background: colors.$opacity-50-dark;
+}
+
 .modal {
     position: fixed;
     top: 50%;
@@ -18,7 +22,6 @@
     transform: translate(-50%, -50%);
     width: min(500px, 100%);
     z-index: 999;
-    background: colors.$background;
     padding: 16px;
     border-radius: 8px;
     border: 1px solid colors.$tone-6;
@@ -32,4 +35,10 @@
         right: 16px;
         cursor: pointer;
     }
+}
+
+.modalDark {
+    border: 1px solid colors.$tone-6-dark;
+    background-color: colors.$modal-content-bg-dark;
+    color: colors.$tone-1-dark;
 }

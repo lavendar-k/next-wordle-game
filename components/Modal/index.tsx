@@ -1,20 +1,33 @@
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { PropsWithChildren } from 'react';
+import { useTheme } from '../../contexts/Theme';
+import { ThemeType } from '../../shared/constants/enums';
 import CloseIcon from '../../shared/icons/CloseIcon';
 import styles from './Modal.module.scss';
 
 const Modal = ({ open, onClose, children }: PropsWithChildren<IProps>) => {
+    const { theme } = useTheme();
     return (
         <AnimatePresence>
             {open && (
                 <>
-                    <div className={styles.modalOverlay} onClick={onClose} />
+                    <div
+                        className={clsx({
+                            [styles.modalOverlay]: true,
+                            [styles.modalOverlayDark]: theme === ThemeType.Dark,
+                        })}
+                        onClick={onClose}
+                    />
                     <motion.div
                         variants={variants}
                         initial="hidden"
                         animate="visible"
                         exit="hidden"
-                        className={styles.modal}
+                        className={clsx({
+                            [styles.modal]: true,
+                            [styles.modalDark]: theme === ThemeType.Dark,
+                        })}
                     >
                         <div
                             className={styles.modalCloseIcon}

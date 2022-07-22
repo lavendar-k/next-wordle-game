@@ -30,3 +30,8 @@
         }
     }
 }
+
+.dark {
+    border-bottom: solid 1px colors.$tone-4-dark;
+    color: colors.$tone-1-dark;
+}

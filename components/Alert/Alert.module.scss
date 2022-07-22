@@ -18,3 +18,11 @@
         color: colors.$white;
     }
 }
+
+.dark {
+    background-color: colors.$white;
+
+    span {
+        color: colors.$black;
+    }
+}

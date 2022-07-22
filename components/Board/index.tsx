@@ -1,13 +1,16 @@
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useData } from '../../contexts/Data';
+import { useTheme } from '../../contexts/Theme';
 import { keyState } from '../../shared/constants/enums';
 import styles from './Board.module.scss';
 import Tile from './Tile';
 
 const Board = () => {
     const { gameData, currentWord, rowShakeControls } = useData();
+    const { theme } = useTheme();
     return (
-        <div className={styles.wrapper}>
+        <div className={clsx(styles.wrapper, styles[theme])}>
             <div className={styles.board}>
                 {gameData.board.map((word, i) => (
                     <div key={i} className={styles.row}>

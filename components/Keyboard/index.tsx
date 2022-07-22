@@ -1,5 +1,7 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useData } from '../../contexts/Data';
+import { useTheme } from '../../contexts/Theme';
 import { answers } from '../../shared/constants/answers';
 import { keys, keyState } from '../../shared/constants/enums';
 import { keysArray, keysLayout } from '../../shared/constants/keys';
@@ -22,12 +24,14 @@ const Keyboard = () => {
         pushStatistics,
     } = useData();
 
+    const { theme } = useTheme();
+
     const handleKeyInput = (key: keys) => {
         if (gameData.board.length >= 6 || isInputDisabled) {
             return;
         }
         if (key == keys.Backspace) {
-            setCurrentWord(currentWord.slice(0, -1));
+            setCurrentWord(prev => prev.slice(0, -1));
         } else if (key === keys.Enter) {
             if (currentWord.length !== 5) {
                 return;
@@ -47,7 +51,7 @@ const Keyboard = () => {
         } else if (currentWord.length > 4) {
             return;
         } else {
-            setCurrentWord(currentWord + key);
+            setCurrentWord(prev => prev + key);
         }
     };
 
@@ -137,7 +141,7 @@ const Keyboard = () => {
 
     return (
         <>
-            <div className={styles.wrapper}>
+            <div className={clsx(styles.wrapper, styles[theme])}>
                 <div className={styles.keyboard}>
                     {keysLayout.map((row, i) => (
                         <div key={i} className={styles.row}>
