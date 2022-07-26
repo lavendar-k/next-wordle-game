@@ -6,6 +6,7 @@ import MenuIcon from '../../shared/icons/MenuIcon';
 import SettingsIcon from '../../shared/icons/SettingsIcon';
 import StatsIcon from '../../shared/icons/StatsIcon';
 import Modal from '../Modal';
+import HowToPlay from './HowToPlay';
 import styles from './Navbar.module.scss';
 import Settings from './Settings';
 import Statistics from './Statistics';
@@ -23,7 +24,13 @@ const Navbar = () => {
                     <div className={styles.icon}>
                         <MenuIcon />
                     </div>
-                    <div className={styles.icon}>
+                    <div
+                        className={styles.icon}
+                        onClick={() => {
+                            setModalContent(<HowToPlay />);
+                            setIsModalOpen(true);
+                        }}
+                    >
                         <HelpIcon />
                     </div>
                 </div>
