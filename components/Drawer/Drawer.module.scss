@@ -1,0 +1,43 @@
+@use 'styles/colors';
+@use 'styles/variables';
+
+.drawerOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: colors.$opacity-50;
+    z-index: 99;
+}
+
+.drawerOverlayDark {
+    background: colors.$opacity-50-dark;
+}
+
+.drawer {
+    position: fixed;
+    top: 51px;
+    left: 0;
+    width: min(375px, 100%);
+    height: calc(100% - 51px);
+    z-index: 999;
+    border: 1px solid colors.$tone-6;
+    background-color: colors.$modal-content-bg;
+    color: colors.$tone-1;
+    box-shadow: 3px 5px 5px rgb(0 0 0 / 15%);
+
+    .drawerCloseIcon {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        z-index: 9999;
+    }
+}
+
+.drawerDark {
+    border: 1px solid colors.$tone-6-dark;
+    background-color: colors.$modal-content-bg-dark;
+    color: colors.$tone-1-dark;
+}

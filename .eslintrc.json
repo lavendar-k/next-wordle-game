@@ -24,7 +24,7 @@
 		"require-jsdoc": "off",
 		"@typescript-eslint/no-unused-vars": ["error", {"argsIgnorePattern": "^_" }],
 		"no-unused-vars": "off",
-		"react-hooks/exhaustive-deps": "off"
-		
+		"react-hooks/exhaustive-deps": "off",
+		"@next/next/no-img-element": "off"
 	}
 }
