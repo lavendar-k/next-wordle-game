@@ -64,10 +64,10 @@ const Statistics = () => {
                         {(Object.entries(guessData)
                             .filter(([key]) => Number(key) < 7)
                             .reduce((total, [_, value]) => total + value, 0) /
-                            Object.entries(guessData).reduce(
+                            (Object.entries(guessData).reduce(
                                 (total, [_, value]) => total + value,
                                 0
-                            )) *
+                            ) || 1)) *
                             100}
                     </span>
                     <span className={styles.key}>Win %</span>
