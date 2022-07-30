@@ -48,10 +48,8 @@ const Keyboard = () => {
             }));
             setCurrentWord('');
             setIsInputDisabled(true);
-        } else if (currentWord.length > 4) {
-            return;
         } else {
-            setCurrentWord(prev => prev + key);
+            setCurrentWord(prev => (prev.length < 5 ? prev + key : prev));
         }
     };
 
