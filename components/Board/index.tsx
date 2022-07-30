@@ -37,17 +37,27 @@ const Board = () => {
                         variants={rowShakeVariants}
                     >
                         {currentWord.split('').map((letter, i) => (
-                            <Tile
-                                key={i}
-                                letter={letter}
-                                state={keyState.Input}
-                            />
+                            <div className={styles.tileWrapper} key={i}>
+                                <div className={styles.tileDummy}>
+                                    <Tile
+                                        letter={letter}
+                                        state={keyState.Input}
+                                    />
+                                </div>
+                            </div>
                         ))}
                         {currentWord.length < 5 &&
                             Array(5 - currentWord.length)
                                 .fill('')
                                 .map((_, i) => (
-                                    <Tile key={`currentWord-${i}`} />
+                                    <div
+                                        className={styles.tileWrapper}
+                                        key={`currentWord-${i}`}
+                                    >
+                                        <div className={styles.tileDummy}>
+                                            <Tile />
+                                        </div>
+                                    </div>
                                 ))}
                     </motion.div>
                 )}
@@ -59,7 +69,14 @@ const Board = () => {
                                 {Array(5)
                                     .fill('')
                                     .map((_, j) => (
-                                        <Tile key={`next-${i * 5 + j}`} />
+                                        <div
+                                            className={styles.tileWrapper}
+                                            key={`next-${i * 5 + j}`}
+                                        >
+                                            <div className={styles.tileDummy}>
+                                                <Tile />
+                                            </div>
+                                        </div>
                                     ))}
                             </div>
                         ))}

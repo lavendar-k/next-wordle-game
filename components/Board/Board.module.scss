@@ -11,49 +11,60 @@
     .board {
         @include mixins.flexContainer(column, space-between);
         width: 100%;
-        height: 399px;
         max-width: 330px;
         row-gap: 5px;
+        height: min(399px, 100%);
 
         .row {
             @include mixins.flexContainer(row, space-between);
             column-gap: 5px;
 
-            .tile {
-                flex: 1;
-                @include mixins.flexContainer(row, center, center);
+            .tileWrapper {
+                position: relative;
                 max-width: 62px;
-                height: 0;
-                padding-top: 8.79%;
-                padding-bottom: 8.79%;
-                border: solid 2px colors.$tone-4;
-                color: colors.$tone-1;
-                font-family: variables.$font2;
-                font-size: 32px;
-                font-weight: 600;
-                cursor: default;
-            }
+                flex: 1;
 
-            .tileCorrect {
-                background-color: colors.$correct;
-                border: solid 2px colors.$correct;
-                color: colors.$tile-text-color;
-            }
+                .tileDummy {
+                    margin-top: 100%;
+                }
 
-            .tilePresent {
-                background-color: colors.$present;
-                border: solid 2px colors.$present;
-                color: colors.$tile-text-color;
-            }
+                .tile {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: auto;
+                    @include mixins.flexContainer(row, center, center);
+                    border: solid 2px colors.$tone-4;
+                    color: colors.$tone-1;
+                    font-family: variables.$font2;
+                    font-size: 32px;
+                    font-weight: 600;
+                    cursor: default;
+                }
 
-            .tileAbsent {
-                background-color: colors.$absent;
-                border: solid 2px colors.$absent;
-                color: colors.$tile-text-color;
-            }
+                .tileCorrect {
+                    background-color: colors.$correct;
+                    border: solid 2px colors.$correct;
+                    color: colors.$tile-text-color;
+                }
 
-            .tileInput {
-                border-color: colors.$tone-3;
+                .tilePresent {
+                    background-color: colors.$present;
+                    border: solid 2px colors.$present;
+                    color: colors.$tile-text-color;
+                }
+
+                .tileAbsent {
+                    background-color: colors.$absent;
+                    border: solid 2px colors.$absent;
+                    color: colors.$tile-text-color;
+                }
+
+                .tileInput {
+                    border-color: colors.$tone-3;
+                }
             }
         }
     }
@@ -62,28 +73,38 @@
 .dark {
     .board {
         .row {
-            .tile {
-                border-color: colors.$tone-3-dark;
-                color: colors.$tone-1-dark;
-            }
+            .tileWrapper {
+                .tile {
+                    border-color: colors.$tone-3-dark;
+                    color: colors.$tone-1-dark;
+                }
 
-            .tileCorrect {
-                background-color: colors.$correct-dark;
-                border-color: colors.$correct-dark;
-                color: colors.$tile-text-color-dark;
-            }
+                .tileCorrect {
+                    background-color: colors.$correct-dark;
+                    border-color: colors.$correct-dark;
+                    color: colors.$tile-text-color-dark;
+                }
 
-            .tilePresent {
-                background-color: colors.$present-dark;
-                border-color: colors.$present-dark;
-                color: colors.$tile-text-color-dark;
-            }
+                .tilePresent {
+                    background-color: colors.$present-dark;
+                    border-color: colors.$present-dark;
+                    color: colors.$tile-text-color-dark;
+                }
 
-            .tileAbsent {
-                background-color: colors.$absent-dark;
-                border-color: colors.$absent-dark;
-                color: colors.$tile-text-color-dark;
+                .tileAbsent {
+                    background-color: colors.$absent-dark;
+                    border-color: colors.$absent-dark;
+                    color: colors.$tile-text-color-dark;
+                }
             }
+        }
+    }
+}
+
+@media only screen and (max-height: 650px) {
+    .wrapper {
+        .board {
+            max-width: 280px;
         }
     }
 }
