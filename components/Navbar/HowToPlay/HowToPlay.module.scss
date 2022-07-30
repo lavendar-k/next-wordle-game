@@ -83,3 +83,44 @@
         }
     }
 }
+
+.dark {
+    color: colors.$tone-1-dark;
+
+    .rows {
+        .row {
+            p {
+                color: colors.$tone-1-dark;
+            }
+
+            .tileRow {
+                .tile {
+                    border: solid 2px colors.$tone-4-dark;
+                    color: colors.$tone-1-dark;
+                }
+
+                .tileCorrect {
+                    background-color: colors.$correct-dark;
+                    border: solid 2px colors.$correct-dark;
+                    color: colors.$tile-text-color-dark;
+                }
+
+                .tilePresent {
+                    background-color: colors.$present-dark;
+                    border: solid 2px colors.$present-dark;
+                    color: colors.$tile-text-color-dark;
+                }
+
+                .tileAbsent {
+                    background-color: colors.$absent-dark;
+                    border: solid 2px colors.$absent-dark;
+                    color: colors.$tile-text-color-dark;
+                }
+
+                .tileInput {
+                    border-color: colors.$tone-3-dark;
+                }
+            }
+        }
+    }
+}

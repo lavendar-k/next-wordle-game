@@ -65,3 +65,15 @@
         letter-spacing: 0.2px;
     }
 }
+
+.dark {
+    a {
+        color: colors.$tone-1-dark;
+    }
+
+    .social {
+        &:hover {
+            background: colors.$tone-5-dark;
+        }
+    }
+}
