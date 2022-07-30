@@ -1,10 +1,8 @@
 @use 'styles/colors';
+@use 'styles/mixins';
 
 .settings {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flexContainer(column, center, center);
     width: 100%;
     height: 100%;
     color: colors.$tone-1;
@@ -23,10 +21,7 @@
     .rows {
         width: 100%;
         .setting {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+            @include mixins.flexContainer(row, space-between, center);
             border-bottom: 1px solid colors.$tone-4;
             padding: 16px 0;
 
@@ -52,9 +47,7 @@
             color: colors.$tone-2;
             font-size: 12px;
             text-align: right;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            @include mixins.flexContainer(row, space-between, flex-end);
         }
     }
 }

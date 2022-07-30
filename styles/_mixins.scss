@@ -1,0 +1,42 @@
+@use 'variables';
+
+@mixin flexContainer(
+    $direction: 'row',
+    $justify: 'flex-start',
+    $align: 'flex-start'
+) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin screen($size, $pixels: $breakpoint-xs) {
+    @if $size == 'xs' {
+        @media screen and (max-width: $breakpoint-xs) {
+            @content;
+        }
+    } @else if $size == 'sm' {
+        @media screen and (max-width: $breakpoint-sm) {
+            @content;
+        }
+    } @else if $size == 'md' {
+        @media screen and (max-width: $breakpoint-md) {
+            @content;
+        }
+    } @else if $size == 'lg' {
+        @media screen and (max-width: $breakpoint-lg) {
+            @content;
+        }
+    } @else if $size == 'xl' {
+        @media screen and (max-width: $breakpoint-xl) {
+            @content;
+        }
+    } @else if $size == 'custom' {
+        @media screen and (max-width: $pixels) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

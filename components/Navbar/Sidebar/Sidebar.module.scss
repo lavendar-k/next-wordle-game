@@ -1,5 +1,6 @@
 @use 'styles/variables';
 @use 'styles/colors';
+@use 'styles/mixins';
 
 .sidebar {
     position: relative;
@@ -21,10 +22,7 @@
     }
 
     .row {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
+        @include mixins.flexContainer(row, flex-start, center);
         padding: 12px 0 12px 18px;
 
         img {

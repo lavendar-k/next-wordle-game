@@ -1,34 +1,27 @@
 @use 'styles/colors';
 @use 'styles/variables';
+@use 'styles/mixins';
 
 .wrapper {
     width: 100%;
     height: calc(100vh - 252px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixins.flexContainer(row, center, center);
     padding-top: 1px;
 
     .board {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include mixins.flexContainer(column, space-between);
         width: 100%;
         height: 399px;
         max-width: 330px;
         row-gap: 5px;
 
         .row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            @include mixins.flexContainer(row, space-between);
             column-gap: 5px;
 
             .tile {
                 flex: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include mixins.flexContainer(row, center, center);
                 max-width: 62px;
                 height: 0;
                 padding-top: 8.79%;
