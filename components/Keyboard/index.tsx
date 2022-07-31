@@ -114,10 +114,12 @@ const Keyboard = () => {
         }, 1500);
         if (gameData.board[gameData.board.length - 1] === answer) {
             pushStatistics(gameData.board.length);
-            alert('You win!');
+            setAlertMessage('You won!');
+            setIsAlertOpen(true);
         } else if (gameData.board.length === 6) {
             pushStatistics(gameData.board.length + 1);
-            alert('You lose!');
+            setAlertMessage('You lost!');
+            setIsAlertOpen(true);
         }
     }, [gameData.board]);
 
