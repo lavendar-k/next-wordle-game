@@ -19,13 +19,17 @@ const Board = () => {
                                 key={`prev-${i * 5 + j}`}
                                 exitBeforeEnter
                             >
-                                <Tile
-                                    key={`prev-${i * 5 + j}-state-${
-                                        gameData.boardStates[i][j]
-                                    }`}
-                                    letter={letter}
-                                    state={gameData.boardStates[i][j]}
-                                />
+                                <div className={styles.tileWrapper} key={i}>
+                                    <div className={styles.tileDummy}>
+                                        <Tile
+                                            key={`prev-${i * 5 + j}-state-${
+                                                gameData.boardStates[i][j]
+                                            }`}
+                                            letter={letter}
+                                            state={gameData.boardStates[i][j]}
+                                        />
+                                    </div>
+                                </div>
                             </AnimatePresence>
                         ))}
                     </div>
