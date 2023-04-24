@@ -1,7 +1,6 @@
 # Nextle
 
 A Wordle clone built as a PWA with Next.js.
-Live version is [here.](https://nextle.burkayanduv.com/)
 
 ## Features
 
@@ -21,14 +20,9 @@ This project includes the following:
 -   [Sass](https://sass-lang.com/)
 -   [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
 
-## Screenshots
-
-![iphone-screenshot-1](https://nextle.burkayanduv.com/screenshots/iphone1.png) ![iphone-screenshot-2](https://nextle.burkayanduv.com/screenshots/iphone2.png)
-![mac-screenshot](https://nextle.burkayanduv.com/screenshots/macbook.png)
-
 ## Author
 
-Burkay Anduv
+Oscar Yang
 
 ## Reference
 
