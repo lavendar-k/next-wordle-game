@@ -8,50 +8,61 @@ const Sidebar = () => {
     return (
         <div className={clsx(styles.sidebar, styles[theme])}>
             <div className={clsx(styles.row, styles.header)}>
-                <img src="/icons/burkayanduv-icon.png" alt="burkayanduv-icon" />
+                <img
+                    style={{
+                        width: '4rem',
+                        height: '4rem',
+                    }}
+                    src="/icons/oscaryang-k-icon.png"
+                    alt="oscaryang-k-icon"
+                />
                 <h1>Contact</h1>
             </div>
             <div className={styles.row}>
                 <h2>Social Media Profiles</h2>
             </div>
-            <a href="https://burkayanduv.com/" target="_blank" rel="noreferrer">
+            <a
+                href="https://oscaryang.netlify.app"
+                target="_blank"
+                rel="noreferrer"
+            >
                 <div className={clsx(styles.row, styles.social)}>
                     <img src="/icons/safari-icon.png" alt="portfolio-icon" />
-                    <span>burkayanduv.com</span>
+                    <span>Oscar Yang Portfolio</span>
                 </div>
             </a>
             <a
-                href="https://github.com/burkayanduv/"
+                href="https://github.com/oscaryang-k/"
                 target="_blank"
                 rel="noreferrer"
             >
                 <div className={clsx(styles.row, styles.social)}>
                     <img src="/icons/github-icon.png" alt="github-icon" />
-                    <span>/burkayanduv</span>
+                    <span>/oscaryang-k</span>
                 </div>
             </a>
             <a
-                href="https://www.linkedin.com/in/burkayanduv/"
+                href="https://www.linkedin.com/in/oscaryang-k/"
                 target="_blank"
                 rel="noreferrer"
             >
                 <div className={clsx(styles.row, styles.social)}>
                     <img src="/icons/linkedin-icon.png" alt="linkedin-icon" />
-                    <span>/burkayanduv</span>
+                    <span>/oscaryang-k</span>
                 </div>
             </a>
             <a
-                href="mailto:burkayanduv@gmail.com"
+                href="mailto:oscaryang1220@gmail.com"
                 target="_blank"
                 rel="noreferrer"
             >
                 <div className={clsx(styles.row, styles.social)}>
                     <img src="/icons/email-icon.png" alt="email-icon" />
-                    <span>burkayanduv@gmail.com</span>
+                    <span>oscaryang1220@gmail.com</span>
                 </div>
             </a>
             <span className={styles.footer}>
-                Developed by Burkay Anduv © 2020
+                Developed by Oscar Yang © 2023
             </span>
         </div>
     );

@@ -30,35 +30,10 @@ const Settings = () => {
                     <div className={styles.text}>
                         <span className={styles.title}>Feedback</span>
                     </div>
-                    <a href="mailto:burkayanduv@gmail.com">Email</a>
+                    <a href="mailto:oscaryang1220@gmail.com">Email</a>
                 </div>
-                <div className={styles.setting}>
-                    <div className={styles.text}>
-                        <span className={styles.title}>Community</span>
-                    </div>
-                    <a
-                        href="https://burkayanduv.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        Twitter
-                    </a>
-                </div>
-                <div className={styles.setting}>
-                    <div className={styles.text}>
-                        <span className={styles.title}>Questions</span>
-                    </div>
-                    <a
-                        href="https://burkayanduv.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        FAQ
-                    </a>
-                </div>
-
                 <div className={styles.footnote}>
-                    <span className={styles.title}>© 2022 Burkay Anduv</span>
+                    <span className={styles.title}>© 2023 Oscar Yang</span>
                     <span className={styles.title}>v1.00</span>
                 </div>
             </div>
