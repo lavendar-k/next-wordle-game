@@ -20,6 +20,12 @@ This project includes the following:
 -   [Sass](https://sass-lang.com/)
 -   [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
 
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/117616805/233892738-58e7fa8d-0241-44d2-b732-532f076b0442.png)
+![image](https://user-images.githubusercontent.com/117616805/233892698-059fcc3a-6cde-4eed-9b93-fc22f7262b5f.png)
+
+
 ## Author
 
 Oscar Yang
